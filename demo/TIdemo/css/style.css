@@ -1,0 +1,25 @@
+/* ===============
+    style.css
+    Cassia Networks 3/1/2019  
+   =============== */
+
+.refbtn{
+  float: right;
+  margin :0 0 0 15px;    
+}
+
+.header,.content{
+  margin:8px 10px;
+}
+
+.pic{
+  width: 400px;
+  height: 270px;
+}
+
+input:-webkit-autofill {
+  background-color: rgb(255, 255, 255);
+　　background-image: none;
+　　color: rgb(0, 0, 0);
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
+}
