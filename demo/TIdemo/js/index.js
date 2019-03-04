@@ -2,25 +2,33 @@
  *      Created by guangyan on 2017/6/9.
  *      2016/12/27 16:49
  *      guangyan@cassianetworks.com
- *      df095efe1f027001290994ef52ff76ff65fe
- *      df-09-5e-fe-1f-02-70-01-29-09-94-ef-52-ff-76-ff-65-fe
+ *      Cleaned up by Kevin Yang 2019/3/4.
+ *      kevin@cassianetworks.us
+ *
+ *      Example reading data using the TI Sensortag GATT profile.
+ *      BLE Payload Data: dadf095efe1f027001290994ef52ff76ff65fe
  *      
- *      Gyro  0-5字节
+ *      ATT Opcode: da
+ *      Data read: df-09-5e-fe-1f-02-70-01-29-09-94-ef-52-ff-76-ff-65-fe
+ *      Data is read in little-endian-like format.
+ *      
+ *      Gyro is bytes(字节) 0-5
  *      GyroX : 09df
  *      GyroY : fe5e
  *      GyroZ : 021f
  *
- *      Acc  6-11字节
+ *      Acc is bytes(字节) 6-11
  *      AccX : 0170
  *      AccY : 0929
  *      AccZ : ef94
  *
- *      Mag 7-12字节
+ *      Mag is bytes(字节) 7-12
  *      MagX : 2901
  *      MagY : ff76
  *      MagZ : fe65  
  *      
  */
+ 
 $(document).ready(function() {
 
 
