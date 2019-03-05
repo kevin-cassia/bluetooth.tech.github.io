@@ -28,13 +28,10 @@
  *      MagZ : fe65  
  *      
  */
- 
+
 $(document).ready(function() {
-
-
   $('#local-control').on('change', function() {
-    //console.log($(this).val());
-    let useway;
+    let useway; // String of the router mode (local or remote).
     if ($(this).val() === 'local') {
       useway = 'local';
       $('#remote-crl').hide();
@@ -62,15 +59,16 @@ $(document).ready(function() {
   };
 
   var host, username, password, APmac, token, isconnect = false;
-  var ref = "64"; //采集数据默认值
-  var refArr = {
+  var connectNum = 0; // Number of connected devices (连接device的数量).
+  var ref = "64"; // Code for collecting default data. (采集数据默认值)
+  var refArr = { // Keys of this object are handles.
     // 41: ref,
     49: ref,
     57: ref,
     73: ref
   };
-  var connectNum = 0; //连接device的数量
-  //断开连接
+
+  // Disconnect button action (断开连接).
   $(".disconbtn").on('click', function() {
     let useway = mystorage.get('useway') || 'local';
     if (useway === 'local') {
@@ -143,7 +141,7 @@ $(document).ready(function() {
   }, 6 * 1000);
 
 
-  //开始连接
+  // Connect button action (开始连接).
   $(".conbtn").on('click', function() {
     let useway = mystorage.get('useway') || 'local';
     console.log('start:', useway);
@@ -157,9 +155,6 @@ $(document).ready(function() {
         .on('notify', notification)
         .scan({})
         .on('scan', scan2conn);
-
-
-
     } else {
       api
         .use({

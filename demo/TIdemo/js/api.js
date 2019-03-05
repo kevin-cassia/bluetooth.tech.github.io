@@ -272,5 +272,5 @@
         return api
     }
 
-    G.api = api
+    G.api = api // Change this so it doesn't use global. No need!
 })(this);
