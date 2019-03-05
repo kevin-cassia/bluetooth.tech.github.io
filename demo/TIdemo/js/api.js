@@ -8,13 +8,14 @@
     api.sse.scan=false
     api.sse.notify=false
     api.access_token = ''
-    let __es = function(target, url, fn) {
+    let _es = function(target, url, fn) {
         let es = target.es = new EventSource(String(url));
         es.onmessage = function(event) {
             fn && fn(event)
         }
     }
-    __es.close = function(target) {
+
+    _es.close = function(target) {
         let es = target.es;
         if (es && es.onmessage) {
             es.close(), es = es.onmessage = null, delete es
@@ -98,7 +99,7 @@
     }
 
     api.scan = function() {
-        __es(api.scan, api.server + '/gap/nodes/?active=1&event=1&mac=' + api.hub + '&access_token=' + api.access_token,
+        _es(api.scan, api.server + '/gap/nodes/?active=1&event=1&mac=' + api.hub + '&access_token=' + api.access_token,
             function(event) {
              
                 api.trigger('scan', [api.hub, event.data])
@@ -106,7 +107,7 @@
         return api
     };
     api.scan.close = function() {
-        __es.close(api.scan)
+        _es.close(api.scan)
         return api
     };
     api.conn = function(o) {
@@ -239,7 +240,6 @@
                 o.error && o.error(err);
             }
         })
-        //return api
     }
 
     api.read = function(o) {
@@ -260,14 +260,13 @@
     api.notify = function(toggle) {
         if (toggle) {
             api.sse.notify=true
-            __es(api.notify, api.server + '/gatt/nodes/?event=1&mac=' + api.hub + '&access_token=' + api.access_token,
+            _es(api.notify, api.server + '/gatt/nodes/?event=1&mac=' + api.hub + '&access_token=' + api.access_token,
                 function(event) {
-                    // console.log(event)
                     api.trigger('notify', [api.hub, event.data])
                 })
         } else {
             api.sse.notify=false
-            __es.close(api.notify)
+            _es.close(api.notify)
         }
         return api
     }
