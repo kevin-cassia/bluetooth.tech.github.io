@@ -3,6 +3,7 @@
  * 2016/12/27 16:49
  * CESDemo
  */
+ 
 (function(G) {
     let api = {sse:{}}
     api.sse.scan=false
@@ -24,22 +25,6 @@
 
     api.use = function(o) {
         o = o || {}
-        // let reg_ip = /(\d+)\.(\d+)\.(\d+)\.(\d+)/,
-        //     reg_http = /http\:\/\/(.+)/;
-        // // local
-        // if (o.server && typeof o.server == 'string' && reg_ip.test(o.server)) {
-        //     //api.server = 'http://' + o.server;
-        //     api.local = true
-        //     // console.log(12312312)
-        //         // cloud
-        // } else {
-        //     // api.server = 'http://' + ({
-        //     //     'us': 'api1',
-        //     //     'cn': 'api2',
-        //     //     'demo': 'demo',
-        //     //     'auto': 'api'
-        //     // }[o.server] || 'api') + '.cassianetworks.com'
-        // }
         api.local = o.local;
         api.server = 'http://' + o.server || 'http://api.cassianetworks.com';
         api.developer = o.developer || 'tester'
@@ -52,7 +37,6 @@
         o = o || {}
         let next = function(d) {
                 api.access_token = d || '',
-                // api.access_token = '',
                 api.authorization = 'Bearer ' + (d || ''),
                 o.success && o.success(d),
                 api.trigger('oauth2', [d])
