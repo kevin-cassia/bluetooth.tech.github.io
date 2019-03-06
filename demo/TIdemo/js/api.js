@@ -3,7 +3,7 @@
  * 2016/12/27 16:49
  * CESDemo
  */
- 
+
 (function(G) {
     let api = {sse:{}}
     api.sse.scan=false
@@ -33,6 +33,7 @@
         api.hub = o.hub
         return api
     }
+
     api.oauth2 = function(o) {
         o = o || {}
         let next = function(d) {
@@ -41,6 +42,7 @@
                 o.success && o.success(d),
                 api.trigger('oauth2', [d])
         }
+
         if (api.local) {
             next()
         } else {
@@ -60,6 +62,7 @@
         }
         return api
     }
+
     api.on = function(e, fn) {
         api.on[e] = fn
         if (e == 'notify' && !api.sse.notify) {
@@ -68,6 +71,7 @@
         }
         return api
     }
+
     api.off = function(e) {
         api.on[e] = null
         delete api.on[e]
@@ -77,6 +81,7 @@
         }
         return api
     }
+
     api.trigger = function(e, args) {
         api.on[e] && (typeof api.on[e] == 'function') && (api.on[e].apply(api, args))
         return api
@@ -89,11 +94,13 @@
                 api.trigger('scan', [api.hub, event.data])
             });
         return api
-    };
+    }
+
     api.scan.close = function() {
         _es.close(api.scan)
         return api
-    };
+    }
+    
     api.conn = function(o) {
         o = o || {}
         $.ajax({
@@ -113,7 +120,9 @@
         })
         return api
     }
-    api.iolist=["DisplayOnly","DisplayYesNo","KeyboardOnly","NoInputNoOutput","KeyboardDisplay"];
+
+    api.iolist = ["DisplayOnly","DisplayYesNo","KeyboardOnly","NoInputNoOutput","KeyboardDisplay"];
+    
     api.pair = function(o) {
         o = o || {}
         $.ajax({
@@ -133,6 +142,7 @@
             }
         })
     }
+
     api.disconn = function(o) {
         o = o || {}
         $.ajax({
@@ -149,6 +159,7 @@
         })
         return api
     }
+
     api.conn.close = function(o) {
         o = o || {}
         $.ajax({
