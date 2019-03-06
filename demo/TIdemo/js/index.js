@@ -175,7 +175,10 @@ $(document).ready(function() {
     }
   });
 
-  // Handler for the Sampling Frequency slider.
+  /* Handler for the Sampling Frequency slider.
+   * #ref is the slider value.
+   * #refTime is the frequency shown in seconds on the UI.
+   */  
   $("#ref").on("change", function() {
     console.log($(this).val() / 100 + "s");
     $("#refTime").html("(" + $(this).val() / 100 + "s)");
