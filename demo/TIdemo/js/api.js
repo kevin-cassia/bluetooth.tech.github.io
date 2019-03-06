@@ -115,23 +115,10 @@
         $.ajax({
             type: 'post',
             url: api.server + '/gap/nodes/' + o.node + '/connection?mac=' + (o.hub || api.hub) + '&access_token=' + api.access_token,
-            /*headers: api.local ? {
-                "Content-Type" : "application/json"
-            } : {
-                'Authorization': api.authorization
-            },
-            data: api.local ? {
-                "type":"random"
-            } : {
-                "type": o.type || "public"
-            },*/
-            // dataType:"text",
-             headers : {"Content-Type" : "application/json"},
-            //contentType: "application/json",
+            headers : {"Content-Type" : "application/json"},
             data : JSON.stringify({"type" : o.type || "public"}),
             success: function(data) {
-                // debugger
-                console.log('connect Ok ',data)
+                console.log('connect Ok ', data)
                 o.success && o.success(o.hub || api.hub, o.node, data)
                 api.trigger('conn', [o.hub || api.hub, o.node, data])
             },
