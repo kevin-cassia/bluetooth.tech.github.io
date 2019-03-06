@@ -175,6 +175,7 @@ $(document).ready(function() {
     }
   });
 
+  // Handler for the Sampling Frequency slider.
   $("#ref").on("change", function() {
     console.log($(this).val() / 100 + "s");
     $("#refTime").html("(" + $(this).val() / 100 + "s)");
