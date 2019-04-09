@@ -27,7 +27,8 @@ const SportBodyModel = Backbone.Model.extend({
 const sportBodyModel = new SportBodyModel({
 	'lang': utils.getLang()
 })
-//定义hub配置页面中hub的视图
+
+// View of the hub page and the hub configuration page.
 let hubItemView, perpheralItemView
 const SportBodyView = Backbone.View.extend({
 	model: sportBodyModel,
@@ -36,14 +37,15 @@ const SportBodyView = Backbone.View.extend({
 		"click #config": "propConfig"
 	},
 	propConfig: function () {
+		let curLang = utils.getLang()
 		sportEventProxy.trigger('config', {
 			closeBtn: 1,
 			area: ['700px', '500px'],
 			tab: [{
-				title: "蓝牙路由器配置",
+				title: lang.sport[curLang].btRouterConfig,
 				content: hubStr.ul
 			}, {
-				title: '终端配置',
+				title: lang.sport[curLang].wristbandConfig,
 				content: perpheralStr.ul
 			}],
 			shade: 0.6 //遮罩透明度

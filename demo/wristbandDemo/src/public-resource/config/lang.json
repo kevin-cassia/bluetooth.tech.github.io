@@ -11,7 +11,9 @@
             "test":"测试",
             "deletes":"移除",
             "Nolocation":"否",
-            "Yeslocation":"是"
+            "Yeslocation":"是",
+            "btRouterConfig":"蓝牙路由器配置",
+            "wristbandConfig":"终端配置"
 
         },
         "en": {
@@ -26,8 +28,9 @@
             "deletes":"Delete",
             "locationsys":"Open Loc.",
             "Nolocation":"NO",
-            "Yeslocation":"YES"
-            
+            "Yeslocation":"YES",
+            "btRouterConfig":"Bluetooth Router Configuration",
+            "wristbandConfig":"Wristband Configuration"
         }
     }
 }
