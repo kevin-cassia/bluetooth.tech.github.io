@@ -22,3 +22,5 @@ node_modules
 *.sublime-project
 *.sublime-workspace
 npm-debug.log
+
+build/
