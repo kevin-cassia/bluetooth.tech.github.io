@@ -36,7 +36,7 @@ module.exports.liItem = function (data) {
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label"   i18n="locationsys">开启定位</label>
+                                <label class="layui-form-label"   i18n="locationsys">Open Positioning</label>
                                 <div>
                                     <input type="radio" data-nochange='1' name=${data.cid} lay-filter='${data.cid}'  value="1" i18n="Yeslocation" ${parseInt(data.location)===1?'checked':''} title = '${data.Yeslocation}' >
                                     <input type="radio" data-nochange='1' name=${data.cid} lay-filter='${data.cid}'  value="0" i18n="Nolocation"  ${parseInt(data.location)===0?'checked':'' } title = '${data. Nolocation}'>
@@ -60,7 +60,7 @@ module.exports.footer = `<li class="hub-item addhub">
                         </li>
                         <li class="layui-form-item last-li">
                             <div class="layui-button">
-                                <button class="layui-btn finsh per" >完成</button>
-                                <button type="reset" class="layui-btn reset layui-btn-primary">重置</button>
+                                <button class="layui-btn finsh per" >Done</button>
+                                <button type="reset" class="layui-btn reset layui-btn-primary">Reset</button>
                             </div>
                         </li>`

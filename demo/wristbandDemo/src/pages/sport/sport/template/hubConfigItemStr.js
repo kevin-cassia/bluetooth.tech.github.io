@@ -15,18 +15,18 @@ module.exports.liItem = ` <li class="hub-item layui-form" data-cid=<%= cid %> >
                             <div class="layui-form-item">
                                 <label class="layui-form-label">Location</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" data-cid='<%- cid%>' name="location" lay-verify="location" placeholder="请输入位置信息"  value='<%= location %>' class="layui-input">
+                                    <input type="text" data-cid='<%- cid%>' name="location" lay-verify="location" placeholder="Enter location information."  value='<%= location %>' class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">HubMac</label>
+                                <label class="layui-form-label">MAC</label>
                                 <div class="layui-input-inline">
                                     <input type="text" data-cid='<%- cid%>' name="mac" lay-verify="mac" placeholder="CC:1B:E0:E0:1B:04" value='<%= mac %>' class="layui-input">
                                 </div>
                             </div>
 
                             <div class="layui-form-item">
-                                <label class="layui-form-label">HubIp</label>
+                                <label class="layui-form-label">IP</label>
                                 <div class="layui-input-inline">
                                     <input type="text" data-cid='<%- cid%>' name="ip" lay-verify="ip" placeholder="192.168.1.100" value='<%= ip %>' class="layui-input">
                                 </div>
@@ -71,7 +71,7 @@ module.exports.footer = `<li class="hub-item addhub">
                         </li>
                         <li class="layui-form-item last-li">
                             <div class="layui-button">
-                                <button class="layui-btn finsh" >完成</button>
-                                <button type="reset" class="layui-btn reset layui-btn-primary">重置</button>
+                                <button class="layui-btn finsh" >Done</button>
+                                <button type="reset" class="layui-btn reset layui-btn-primary">Reset</button>
                             </div>
                         </li>`

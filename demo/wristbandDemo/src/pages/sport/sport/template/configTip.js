@@ -11,18 +11,18 @@ var addSrc = require('publicDir/imgs/addback.jpg')
                             <div class="layui-form-item">
                                 <label class="layui-form-label">Location</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="location" placeholder="输入位置信息" value=<%= cid %> class="layui-input">
+                                    <input type="text" name="location" placeholder="Enter location information." value=<%= cid %> class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">HubMac</label>
+                                <label class="layui-form-label">MAC</label>
                                 <div class="layui-input-inline">
                                     <input type="text" name="hubMac" placeholder="CC:1B:E0:E0:1B:04" value=<%= hubMac %> class="layui-input">
                                 </div>
                             </div>
 
                             <div class="layui-form-item">
-                                <label class="layui-form-label">HubIp</label>
+                                <label class="layui-form-label">IP</label>
                                 <div class="layui-input-inline">
                                     <input type="text" name="hubMac" placeholder="192.168.1.100" value=<%= hubIp %> class="layui-input">
                                 </div>
@@ -63,8 +63,8 @@ var addSrc = require('publicDir/imgs/addback.jpg')
                         </li>
                         <li class="layui-form-item">
                             <div class="layui-button">
-                                <button class="layui-btn" id="finsh">完成</button>
-                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                <button class="layui-btn" id="finsh">Done</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
                             </div>
                         </li>
                     </ul>`
