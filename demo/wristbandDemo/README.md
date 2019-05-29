@@ -1,20 +1,20 @@
-﻿#  demo项目说明
-## 项目介绍
-- 使用nodejs+express实现web服务，后台主要作用是向浏览器发送静态网页，在浏览器端向hub发送指令（连接，读取数据，断开连接，等等）。本项目支持多台hub与手环交互，采用云端+本地方式控制hub
--  hub与各个蓝牙设备的控制逻辑采用模块化思想编写
-## 前端主要技术：
-- 使用webpack打包前端资源
-- 使用npm管理第三方包依赖
-- babel转换es6语法
-- 使用mvc框架backbone框架进行数据与视图分离
-- 使用jquery工具库简化js操作
-- 使用自己编写的工具库api.js简化hub SDK调用
-##  后端技术
+﻿#  Wristband Demo Guide
+## Getting Started
+- Using nodejs+express to implement web services, the main role of the backend is to send static web pages to the browser, and send instructions to the router (connection, read data, disconnect, etc.). This project supports multiple routers to interact with the bracelet and controls the router using the cloud + local mode.
+-  The control logic of the router and each Bluetooth device is written in a modular way.
+## Front-end Tools：
+- webpack to package front-end resources.
+- npm to manage third-party resources.
+- babel with es6 syntax.
+- Data and view separation using the mvc framework backbone framework.
+- Simplify js operations with the jquery library.
+- Simplify the router SDK call with your own tool library api.js
+##  Back-end Tools:
 - 
 - 
 
 
-## 前端目录结构说明
+## Front-end Directory Structure
 ```
 ├─build # 编译后生成的所有代码、资源（图片、字体等，虽然只是简单的从源目录迁移过来）
 ├─node_modules # 利用npm管理的所有包及其依赖
@@ -55,20 +55,20 @@
         └─logic # 业务逻辑
 ```
 ## CLI命令（npm scripts）
-|命令|作用&效果|
+| Command | Description |
 |---------------- |---------------|
-|`npm install`    |根据`package.json`，安装项目依赖 |
-|`npm run build`  |根据`webpack.config.js`，build出一份生产环境的代码 |
-| `npm run dev`   | 根据`webpack.dev.config.js`，build出一份开发环境的代码 |
-| `npm run start` | 开启webpack-dev-server并自动打开浏览器，自动监测源码变动并实现LiveReload，**实际开发时使用此项** |
+|`npm install` |Install project dependencies based on `package.json` |
+|`npm run build` |Build a production environment program based on `webpack.config.js` |
+| `npm run dev` | build a development environment program based on `webpack.dev.config.js` |
+| `npm run start` | Open webpack-dev-server and automatically open the browser, automatically monitor source changes, and implement LiveReload, **use this for actual development** |
 
 
-## 使用说明
-- 下载本项目所有依赖
+## Usage
+- Download all dependencies for this project.
 ```
 npm install
 ```
-- 启动服务器
+- Start the server.
 ```
 npm run start
 ```
