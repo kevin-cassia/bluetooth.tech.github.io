@@ -48,13 +48,13 @@ const SportBodyView = Backbone.View.extend({
 				title: lang.sport[curLang].wristbandConfig,
 				content: perpheralStr.ul
 			}],
-			shade: 0.6 //遮罩透明度
+			shade: 0.6 // Mask transparency
 				,
-			maxmin: true //允许全屏最小化
+			maxmin: true // Allow full screen minimization
 				,
-			anim: 5 //0-6的动画形式，-1不开启
+			anim: 5 // 0-6 animation form, -1 does not open
 				,
-			//弹窗成功后的回调
+			// Callback after successful pop-up.
 			success: function () {
 				hubItemView = new SportConfigView({
 					el: $('.config-tip-hub'),
@@ -69,9 +69,9 @@ const SportBodyView = Backbone.View.extend({
 					}
 				})
 			},
-			//右上角取消回调
+			// Cancel callback in the upper right corner.
 			cancel: function () {
-				//销毁hub配置页面中hub的视图
+				// Destroy the view of the hub in the hub configuration page.
 				hubItemView.remove()
 				perpheralItemView.remove()
 			}
