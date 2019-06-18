@@ -84,7 +84,7 @@ const DashboardView = Backbone.View.extend({
                 this.dashBoard[item.node].stop(true, false).css('opacity', 1)
             } else if (life === limit) {
                 this.dashBoard[item.node].stop(true, false).css('opacity', .2)
-                this.model.get(item.node).set('loc', '未知')
+                this.model.get(item.node).set('loc', 'Unknown')
             }
             if (life !== limit) {
                 this.model.get(item.node).set('timeFlag', this.model.get(item.node).get('timeFlag') + 1);
@@ -129,7 +129,7 @@ const DashboardView = Backbone.View.extend({
                 silent: true
             });
             this.loc[item.node].html(item.loc)
-            this.positionInfo[item.node].append(dashboardPosition(`离开 ${model.previous('loc')} 进入 `, item.loc))
+            this.positionInfo[item.node].append(dashboardPosition(`Leave ${model.previous('loc')} Enter `, item.loc))
             this.timeFlag[item.node] = this.positionInfo[item.node].find('li:last-child .position-duration')
             this.timeFlag[item.node].html(model.get('timeFlag'))
         }
