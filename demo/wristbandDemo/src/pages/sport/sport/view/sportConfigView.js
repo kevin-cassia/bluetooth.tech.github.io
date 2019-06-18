@@ -28,7 +28,7 @@ let HubItemView = Backbone.View.extend({
         'click .reset': 'reset'
     },
     initialize: function () {
-        //判断传选择的视图  hub配置或者peripheral配置
+        // Decide the selected view, hub configuration, or peripheral configuration.
         if (this.attributes.view === 'hub') {
             this.attributes._model = hubItem.Model;
             this.attributes.select = 'ul.config-tip-hub li.addhub';
@@ -38,7 +38,7 @@ let HubItemView = Backbone.View.extend({
             this.listenTo(this.model(), 'change', function () {
 
             });
-            //根据radio的值修改验证规则
+            // Modify the validation rules based on the value of the radio.
             form.on(`radio`, function (data) {
 
                 if (data.elem.dataset.nochange === '1') {
@@ -74,72 +74,72 @@ let HubItemView = Backbone.View.extend({
 
             });
 
-            //表单验证规则
+            // Form validation.
             form.verify({
                 location: function (value) {
                     const _value = $.trim(value)
                     if (_value === '') {
-                        return 'Location不能为空'
+                        return 'Location field cannot be empty!'
                     }
                 },
                 perMac: function (value) {
                     const _value = $.trim(value)
                     if (_value && !utils.Reg.mac.test(_value)) {
-                        return 'Mac输入错误'
+                        return 'Please input a valid MAC address!'
                     }
                 },
                 mac: function (value) {
                     const _value = $.trim(value)
                     if (_value === '') {
-                        return 'Mac不能为空'
+                        return 'MAC field cannot be empty!'
                     }
                     if (/\：/.test(_value)) {
-                        return '请使用英文符号'
+                        return 'Please use English characters!'
                     }
                     if (!utils.Reg.mac.test(_value)) {
-                        return 'Mac输入错误'
+                        return 'Please input a valid MAC address!'
                     }
 
                 },
                 ip: function (value) {
                     const _value = $.trim(value)
                     if (_value === '') {
-                        return 'HubIp不能为空'
+                        return 'HubIp field cannot be empty!'
                     }
                     if (utils.Reg.server.test(_value)) {
-                        return '请使用英文符号'
+                        return 'Please use English characters!'
                     }
                     if (!utils.Reg.ip.test(_value)) {
-                        return 'HubIp输入错误'
+                        return 'Please input a valid HubIp!'
                     }
 
                 },
                 server: function (value) {
                     const _value = $.trim(value)
                     if (_value === '') {
-                        return 'Server不能为空'
+                        return 'Server field cannot be empty!'
                     }
                     if (utils.Reg.server.test(_value)) {
-                        return '请使用英文符号'
+                        return 'Please use English characters!'
                     }
                 },
                 developer: function (value) {
                     const _value = $.trim(value)
                     if (_value === '') {
-                        return 'Developer不能为空'
+                        return 'Developer field cannot be empty!'
                     }
                     if (!utils.Reg.developer.test(_value)) {
-                        return 'Develop只能是字母数字下划线，且不能以数字开头'
+                        return 'Develop field can only contain alphanumeric or underscore characters and cannot start with a number!'
                     }
                 },
                 password: function (value) {
                     const _value = $.trim(value)
                     if (_value === '') {
-                        return 'Password不能为空'
+                        return 'Password field cannot be empty!'
                     }
                 }
             });
-            //点击hubtest时绑定事件
+            // Bind event when clicking hubtest.
             form.on('submit(testHub)', function (e) {
                 const data = utils.trimeClone(e.field),
                     cid = e.elem.dataset.cid,
@@ -149,7 +149,7 @@ let HubItemView = Backbone.View.extend({
                 submodel.set('method', data[cid])
                 submodel.set('verify', true)
                 submodel.set('online', false)
-                console.log('hub配置信息', submodel.attributes)
+                console.log('Router Configuration Information', submodel.attributes)
                 this.model().test(submodel)
 
                 return false;
@@ -163,7 +163,7 @@ let HubItemView = Backbone.View.extend({
             this.attributes.select = 'ul.config-tip-peripheral li.addhub'
 
             /**
-             *点击手环test时绑定事件
+             * Bind event when clicking bracelet test.
              */
             form.on('submit(testPer)', function (e) {
                 const data = utils.trimeClone(e.field),
@@ -229,7 +229,7 @@ let HubItemView = Backbone.View.extend({
                     temp, repeat = false
 
                 if (collection.toJSON().length === 0) {
-                    layui.layer.msg('请添加手环！！', {
+                    layui.layer.msg('Please add a bracelet!', {
                         icon: 2,
                         time: 1000
                     });
@@ -252,7 +252,7 @@ let HubItemView = Backbone.View.extend({
                 })
 
                 if (repeat === 'name') {
-                    layui.layer.msg('手环型号不能重复！！', {
+                    layui.layer.msg('Bracelet model name cannot be duplicated!', {
                         icon: 2,
                         time: 1000
                     });
@@ -272,7 +272,7 @@ let HubItemView = Backbone.View.extend({
                     layui.layer.closeAll()
 
                 } else {
-                    layui.layer.msg('手环验证成功，请填写hub信息', {
+                    layui.layer.msg('Bracelet verification was successful. Please fill in the router information.', {
                         icon: 1,
                         time: 1000
                     });
@@ -289,13 +289,13 @@ let HubItemView = Backbone.View.extend({
             const online = collection.pluck('online'),
                 allHub = collection.toJSON()
 
-            //所有hub通过在线
+            // Check that all routers are online.
             if (verify.indexOf(false) === -1 && online.indexOf(false) === -1) {
                 clearInterval(hubs.timer)
                 allHubs.length = 0
                 let repeat = false
                 if (allHub.length === 0) {
-                    layui.layer.msg('请添加hub！！', {
+                    layui.layer.msg('Please add a router!', {
                         icon: 2,
                         time: 1000
                     })
@@ -320,14 +320,14 @@ let HubItemView = Backbone.View.extend({
                 }
                 allHubs.hubVer = true
                 if (repeat === 'mac') {
-                    layui.layer.msg('重复添加hub！！', {
+                    layui.layer.msg('Router MAC address already exists!', {
                         icon: 2,
                         time: 1000
                     })
                     return
                 }
                 if (repeat === 'ip') {
-                    layui.layer.msg('hub IP 重复！！', {
+                    layui.layer.msg('Router IP address already exists!', {
                         icon: 2,
                         time: 1000
                     })
@@ -336,7 +336,7 @@ let HubItemView = Backbone.View.extend({
                 if (allHubs.peripheralsVer && allHubs.hubVer) {
                     layui.layer.closeAll()
                 } else {
-                    layui.layer.msg('hub验证成功，请填写手环信息', {
+                    layui.layer.msg('Router verification was successful. Please fill in the bracelet information.', {
                         icon: 1,
                         time: 1000
                     });

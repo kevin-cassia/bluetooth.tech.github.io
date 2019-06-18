@@ -26,7 +26,7 @@ const HubItemColle = Backbone.Collection.extend({
     test: function (model) {
         if (model.get('verify') === false)
             return
-        // 测试hub是否可用
+        // Test if the hub is available.
         const option = {
             success: function () {
                 this.set('online', true)

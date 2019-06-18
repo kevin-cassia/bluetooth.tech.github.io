@@ -3,10 +3,10 @@ const hubConfig = require('configDir/peripheralConfig.json')
 const allPers = hubConfig.allPers
 
 
-//hubitem外的字符串
+// String outside hubitem
 module.exports.ul = ` <ul class='config-tip-peripheral config-tip '></ul>`
 
-//每个hubitem的字符串 
+// String for each hubitem
 module.exports.liItem = function (data) {
     let optionsStr = '',
         select = null

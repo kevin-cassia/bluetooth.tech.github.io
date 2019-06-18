@@ -1,17 +1,18 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const dirVars = require('./webpack-config/base/dir-vars.config.js'); // 与业务代码共用同一份路径的配置表
+const dirVars = require('./webpack-config/base/dir-vars.config.js'); // Configuration table that shares the same path with the business code.
 
 module.exports = {
   output: {
     path: dirVars.dllDir,
     filename: '[name].js',
-    library: '[name]' // 当前Dll的所有内容都会存放在这个参数指定变量名的一个全局变量下，注意与DllPlugin的name参数保持一致
+    library: '[name]' // All the contents of the current Dll will be stored in a global variable of the variable name specified by this parameter.
+    // Note that it is consistent with the name parameter of DllPlugin.
   },
   entry: {
     /*
-      指定需要打包的js模块
-      或是css/less/图片/字体文件等资源，但注意要在module参数配置好相应的loader
+      Specifies the js module to be packaged or 
+      css/less/picture/font file and other resources.
     */
     dll: [
       'jquery',
@@ -20,11 +21,11 @@ module.exports = {
   },
   plugins: [
     new webpack.DllPlugin({
-      path: 'manifest.json', // 本Dll文件中各模块的索引，供DllReferencePlugin读取使用
-      name: '[name]',  // 当前Dll的所有内容都会存放在这个参数指定变量名的一个全局变量下，注意与参数output.library保持一致
-      context: dirVars.staticRootDir // 指定一个路径作为上下文环境，需要与DllReferencePlugin的context参数保持一致，建议统一设置为项目根目录
+      path: 'manifest.json', // The index of each module in this Dll file, used for reading DllReferencePlugin.
+      name: '[name]',  // All the contents of the current Dll will be stored in a global variable of the variable name specified by this parameter, pay attention to the same as the output.library parameter.
+      context: dirVars.staticRootDir // Specify a path as the context, which needs to be consistent with the context parameter of DllReferencePlugin. It is recommended to set it as the project root directory.
     }),
-    /* 跟业务代码一样，该兼容的还是得兼容 */
+    /* Like the business code, this is still compatible. */
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -33,7 +34,7 @@ module.exports = {
       Backbone:'Backbone',
       _:'underscore'
     }),
-    new ExtractTextPlugin('[name].css'), // 打包css/less的时候会用到ExtractTextPlugin
+    new ExtractTextPlugin('[name].css'), // ExtractTextPlugin is used when packaging css/less.
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
@@ -45,6 +46,6 @@ module.exports = {
       }
     })
   ],
-  module: require('./webpack-config/module.product.config.js'), // 沿用业务代码的module配置
-  resolve: require('./webpack-config/resolve.config.js') // 沿用业务代码的resolve配置
+  module: require('./webpack-config/module.product.config.js'), // The module configuration for the business code.
+  resolve: require('./webpack-config/resolve.config.js') // Resolve for the business code.
 };

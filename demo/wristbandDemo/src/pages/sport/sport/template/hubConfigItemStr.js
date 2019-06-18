@@ -1,9 +1,9 @@
 var addSrc = require('publicDir/imgs/addback.jpg')
 
-//hubitem外的字符串
+// String outside hubitem
 module.exports.ul = ` <ul class='config-tip-hub config-tip'></ul>`
 
-//每个hubitem的字符串          
+// String for each hubitem          
 module.exports.liItem = ` <li class="hub-item layui-form" data-cid=<%= cid %> >
                             <div class="layui-form-item">
                                 <label class="layui-form-label"   i18n="control"><%= control %></label>

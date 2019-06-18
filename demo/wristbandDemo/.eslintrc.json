@@ -10,12 +10,12 @@
 	},
 	"parser": "babel-eslint",
 	"rules": {
-		"no-cond-assign": [2, "always"], //if, while等条件中不允许使用“=”
+		"no-cond-assign": [2, "always"], //"=" is not allowed in conditions such as if, while.
 		"no-constant-condition": 2,
-		"no-debugger": 0, // 程序中不能出现debugger
-		"no-dupe-args": 2, // 函数的参数名称不能重复
-		"no-dupe-keys": 2, // 对象的属性名称不能重复
-		"no-duplicate-case": 2, // switch的case不能重复
+		"no-debugger": 0, // The debugger cannot appear in the program.
+		"no-dupe-args": 2, // The parameter name of the function cannot be repeated.
+		"no-dupe-keys": 2, // The attribute name of the object cannot be repeated.
+		"no-duplicate-case": 2, // Switch case cannot be repeated.
 		"no-func-assign": 2,
 		"no-obj-calls": 2,
 		"no-regex-spaces": 2,
