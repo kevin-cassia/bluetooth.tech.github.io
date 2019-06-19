@@ -65,7 +65,7 @@ function sendMsgHandle(node, hubs, str) {
 
 
     /**
-     *组包
+     * Group packets
      * @param data
      * @param remainder
      * @param sequence
@@ -126,18 +126,18 @@ function sendMsgHandle(node, hubs, str) {
             checksum(packet);
             packets.push(packet.join(''));
         } else {
-            //多包
+            // Multiple packets
             setOfPackets(data, data.length, 0)
         }
     }
 
 
-    //是否含有中文（也包含日文和韩文）
+    // Check whether it contains Chinese (also includes Japanese and Korean).
     function isChineseChar(str) {
         let reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;
         return reg.test(str);
     }
-    //同理，是否含有全角符号的函数
+    // Check whether it contains a full-width symbol function.
     function isFullwidthChar(str) {
         let reg = /[\uFF00-\uFFEF]/;
         return reg.test(str);

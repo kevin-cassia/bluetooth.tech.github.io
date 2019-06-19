@@ -39,26 +39,26 @@ let Hub = function (config) {
         maxConnected1: config.maxConnected1 || hubConfig.config.maxConnected1
     }
     this.status = {
-        online: false, //hub在线?
-        conn: 0, //连接数量
-        doing: { //正在做什么
-            scan: 2, //0:芯片0扫描;1:芯片1扫描;2代表停止扫描
-            node: '' //正在连接设备的mac
+        online: false, // Is router online?
+        conn: 0, // Number of connections
+        doing: { // What you are doing
+            scan: 2, //0:Chip 0 scan; 1: chip 1 scan; 2 means stop scanning
+            node: '' // MAC being connected to the device
         }
     }
-    this.connetedPeripherals = { //已连接设备
-        checkConnTime: hubConfig.connetedPeripherals.checkConnTime, //检查连接时间周期
-        CheckConnTimeExp: 0, //时间后检查
+    this.connetedPeripherals = { // Connected devices
+        checkConnTime: hubConfig.connetedPeripherals.checkConnTime, // Check connection time period
+        CheckConnTimeExp: 0, // Time expiration check
         Peripherals: { //
             peripheralsMac: {
                 // node: '',
                 // name: '',
                 // type: '',
-                // chipId: null //连接的芯片
-                // notify: '', //是否通知
-                // expectedNotify: '', //期望是否通知
-                // checkNotifyTime: 3, //
-                // checkNotifyTimeExp: 0 //时间后检查
+                // chipId: null // Connected chip ID
+                // notify: '', // Whether to notify
+                // expectedNotify: '', // Expectation of notification
+                // checkNotifyTime: 3, // Notify time check
+                // checkNotifyTimeExp: 0 // Notify time expiration check
             }
         }
     }

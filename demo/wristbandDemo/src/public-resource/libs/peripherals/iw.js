@@ -2,17 +2,17 @@
   function iwsendMsgHandle(node, hubs, str){
 
     
-    //是否含有中文（也包含日文和韩文）
+    // Check whether string contains Chinese (also includes Japanese and Korean)）
     function isChineseChar(str) {
         let reg = /[\u4E00-\u9FA5\uF900-\uFA2D]/;
         return reg.test(str);
     }
-    //同理，是否含有全角符号的函数
+    // Check whether string contains a full-width symbol.
     function isFullwidthChar(str) {
         let reg = /[\uFF00-\uFFEF]/;
         return reg.test(str);
     }
-    // 将str转为unicode
+    // Convert str to unicode
     function encodeUtf8(data) {
         // return encodeURI(data).split('%').join("")
         let val = "";
@@ -61,7 +61,7 @@
       }
 
 
-//写入逻辑  
+// Writing logic  
     function iwsendMsg(node,hubs,str){
         let convertedData = encodeUtf8(str);
         let packets = packetData(convertedData);
